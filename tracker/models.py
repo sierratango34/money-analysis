@@ -48,7 +48,7 @@ class Transaction(models.Model):
         (FUEL, 'Fuel'),
     ]
 
-    sheet = models.ForeignKey(Sheet, on_delete=model.CASCADE)
+    sheet = models.ForeignKey(Sheet, on_delete=models.CASCADE)
     description = models.CharField(max_length=200)
     category = models.CharField(max_length=30, choices=CATEGORY_CHOICES, default=GENERAL)
     amount = models.IntegerField(default=0)
