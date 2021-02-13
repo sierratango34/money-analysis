@@ -4,3 +4,13 @@
 {{sheet.start_date}}
 <br>
 {{sheet.end_date}}
+
+{% for transaction in sheet.transaction_set.all %}
+<p>{{transaction.description}}</p>
+<p>{{transaction.amount}}</p>
+<p>{{transaction.category}}</p>
+<p>{{transaction.date}}</p>
+<br>
+{% endfor %}
+
+{% include "tracker/new-transaction-form.html" %}
