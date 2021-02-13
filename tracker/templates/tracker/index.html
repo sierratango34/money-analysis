@@ -1,0 +1,13 @@
+{% include "tracker/base.html" %}
+
+{% if sheet_list %}
+
+<ul>
+  {% for sheet in sheet_list %}
+  <li><a href="{{sheet.id}}">{{sheet.title}}</li>
+  {% endfor %}
+</ul>
+
+{% else %}
+<p>No sheets are available for viewing.</p>
+{% endif %}
