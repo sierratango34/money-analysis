@@ -37,6 +37,7 @@ CATEGORY_CHOICES = [
     (FUEL, 'Fuel'),
 ]
 
+
 class TransactionForm(forms.Form):
     description = forms.CharField(max_length=200)
     category = forms.CharField(max_length=30)
@@ -47,3 +48,10 @@ class TransactionForm(forms.Form):
         widget=forms.Select,
         choices=CATEGORY_CHOICES,
     )
+
+    def clean_description(self):
+        data = self.cleaned_data['description']
+
+        data.strip()
+
+    # def clean_category(self)

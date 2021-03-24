@@ -6,6 +6,7 @@ from django.utils import timezone
 from .models import Sheet, Transaction
 from .forms import TransactionForm
 
+
 class IndexView(generic.ListView):
     template_name = "tracker/index.html"
     context_object_name = "sheet_list"
@@ -13,6 +14,7 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         """Return all of the sheets"""
         return Sheet.objects.all()
+
 
 def sheetDetail(request, sheet_id):
     form = TransactionForm()
@@ -28,14 +30,14 @@ def sheetDetail(request, sheet_id):
 #     model = Transaction
 #     template_name = "tracker/transaction-detail.html"
 
+
 def addTransaction(request, sheet_id):
     if request.method == 'POST':
         form = TransactionForm(request.POST)
         if form.is_valid():
-            return HttpResponseRedirect('/<int:pk>/')
+            return HttpResponseRedirect('/<int:sheet_id>/')
 
     else:
         form = TransactionForm()
 
     return render(request, 'tracker/new-transaction-form.html', {'form': form})
-

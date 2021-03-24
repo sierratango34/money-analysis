@@ -2,6 +2,7 @@ import datetime
 from django.db import models
 from django.utils import timezone
 
+
 class Sheet(models.Model):
     title = models.CharField(max_length=200)
     start_date = models.DateField('start date')
@@ -54,10 +55,10 @@ class Transaction(models.Model):
 
     sheet = models.ForeignKey(Sheet, on_delete=models.CASCADE)
     description = models.CharField(max_length=200)
-    category = models.CharField(max_length=30, choices=CATEGORY_CHOICES, default=GENERAL)
+    category = models.CharField(
+        max_length=30, choices=CATEGORY_CHOICES, default=GENERAL)
     amount = models.IntegerField(default=0)
     date = models.DateField('date')
-
 
     def __str__(self):
         return self.description
